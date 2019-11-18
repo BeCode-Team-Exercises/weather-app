@@ -14,7 +14,6 @@
     />
     <!-- Stylesheet CSS -->
     <link rel="stylesheet" href="CSS/main.css" />
-    <link rel="stylesheet" href="CSS/fstdropdown.css" />
   </head>
   <body>
     <header>
@@ -39,18 +38,18 @@
                   Which city do you want to know the weather of?
                 </h4>
                 <form>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Example select</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </form>
+                  <div class="form-group">
+                    <select class="form-control">
+                      <option>Select a city</option>
+                      <option>Ghent</option>
+                      <option>Brussels</option>
+                      <option>Antwerp</option>
+                    </select>
+                  </div>
+                </form>
+                <button id="button" class="btn btn-primary">
+                  Submit
+                </button>
               </div>
             </div>
           </div>
@@ -149,7 +148,6 @@
     <!-- Footer -->
     <!-- script -->
     <script type="text/javascript" src="JS/main.js"></script>
-    <script src="JS/fstdropdown.js"></script>
     <!-- script -->
   </body>
 </html>
