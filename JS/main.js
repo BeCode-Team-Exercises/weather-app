@@ -7,7 +7,7 @@ document.getElementById("button").addEventListener("click", async () => {
   const jsonCity = await response.json();
   const list = jsonCity.list;
   var listArray = [];
-  const listm = list.forEach(datum => {
+  list.forEach(datum => {
     const weatherInfo = datum.weather[0];
     if (datum.dt_txt.includes("15:00")) {
       var event = new Date(datum.dt_txt);
@@ -29,7 +29,7 @@ document.getElementById("button").addEventListener("click", async () => {
         let status = `.status${i}`;
         let city = `.city${i}`;
         document.querySelector(`${day}`).textContent = listArray[j];
-        document.querySelector(`${temp}`).textContent = listArray[j + 1];
+        document.querySelector(`${temp}`).textContent = listArray[j + 1] + '°C';
         document.querySelector(`${status}`).textContent = listArray[j + 2];
         document.querySelector(`${city}`).textContent = chosenCity;
         j += 3;
