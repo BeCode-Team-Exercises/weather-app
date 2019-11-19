@@ -34,10 +34,10 @@ document.getElementById("button").addEventListener("click", async () => {
         let temp = `.temp${i}`;
         let status = `.status${i}`;
         let city = `.city${i}`;
-        document.querySelector(`${day}`).innerHTML = listArray[j];
-        document.querySelector(`${temp}`).innerHTML = listArray[j + 1];
-        document.querySelector(`${status}`).innerHTML = listArray[j + 2];
-        document.querySelector(`${city}`).innerHTML = chosenCity;
+        document.querySelector(`${day}`).textContent = listArray[j];
+        document.querySelector(`${temp}`).textContent = listArray[j + 1];
+        document.querySelector(`${status}`).textContent = listArray[j + 2];
+        document.querySelector(`${city}`).textContent = chosenCity;
         j += 3;
       }
     }
