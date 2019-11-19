@@ -8,7 +8,6 @@ document.getElementById("button").addEventListener("click", async () => {
   const jsonCity = await response.json();
 
   const list = jsonCity.list;
-  console.log(list)
   var listArray = [];
 
   const listm = list.forEach(datum => {
