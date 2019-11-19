@@ -1,18 +1,5 @@
-//document.getElementById("button").addEventListener("click", async () => {
-//console.log("test");
-
-//const response = await fetch(
-//"http://api.openweathermap.org/data/2.5/forecast?q=Ghent,be&appid=2118afe2ed56240f86bbd108daffe6b8"
-//);
-//const city = await response.json();
-//console.log(city);
-//});
-
-// console.log(document.querySelector(".form-control"));
-
 document.getElementById("button").addEventListener("click", async () => {
   const selectCity = document.querySelector(".form-control");
-  // console.log(selectCity.value);
   let chosenCity = selectCity.value;
 
   const response = await fetch(
@@ -22,44 +9,38 @@ document.getElementById("button").addEventListener("click", async () => {
 
   const list = jsonCity.list;
 
-  const listm = list.forEach(datum => {
+  var listArray = [];
 
-    const weatherInfo = datum.weather[0]
+  const listm = list.forEach(datum => {
+    const weatherInfo = datum.weather[0];
 
     if (datum.dt_txt.includes("15:00")) {
       var event = new Date(datum.dt_txt);
-      var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
-      console.log(event.toLocaleDateString('en-EN', options));
-      console.log(datum.main.temp);
-      console.log(weatherInfo.main);
+      var options = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      };
+
+      listArray.push(
+        event.toLocaleDateString("en-EN", options),
+        datum.main.temp,
+        weatherInfo.main
+      );
+
+      let j = 0;
+      for (var i = 1; i <= 5; i++) {
+        let day = `.day${i}`;
+        let temp = `.temp${i}`;
+        let status = `.status${i}`;
+        let city = `.city${i}`;
+        document.querySelector(`${day}`).innerHTML = listArray[j];
+        document.querySelector(`${temp}`).innerHTML = listArray[j + 1];
+        document.querySelector(`${status}`).innerHTML = listArray[j + 2];
+        document.querySelector(`${city}`).innerHTML = chosenCity;
+        j += 3;
+      }
     }
-
   });
-
-  // console.log(list);
 });
-
-// console.log(document.querySelector(".form-control"));
-
-// const tpl = document.querySelector("#tpl-hero");
-// const target = document.querySelector("#target");
-
-const displayHero = hero => {
-  const elt = tpl.cloneNode(true).content;
-
-  elt.querySelector(".name").innerHTML = hero.name;
-  elt.querySelector(".alter-ego").innerHTML = hero.alterEgo;
-
-  elt.querySelector(".powers").innerHTML = hero.abilities.join(", ");
-
-  target.appendChild(elt);
-};
-
-// (() => {
-//   document.querySelector("#run").addEventListener("click", async () => {
-//     const response = await fetch("//localhost:3000/heroes");
-//     const heroes = await response.json();
-
-//     heroes.forEach(displayHero);
-//   });
-// })();
